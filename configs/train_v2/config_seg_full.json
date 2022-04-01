@@ -1,0 +1,55 @@
+{
+  "DATASET_PATH": "./dataset",
+  "IMG_MEAN": 87.6896,
+  "IMG_STD": 132.2274,
+
+  "H": 256,
+  "W": 1600,
+
+  "NUM_MULTILABEL_CLASSES": 5,
+  "RESUME_BINCLASS_PATH": "",
+  "RESUME_MULCLASS_PATH": "",
+  "RESUME_SEG_PATH":  "checkpoints/best_model_segmentator_full.pth",
+  
+  "training":{
+
+    "BINCLASS":{
+      "NUM_BIN_ITERATIONS": 0,
+      "LR_BASE_BINCLASS": 5e-4,
+      "BACKBONE": "simple",
+      "NAME": "bin_class_simple",
+      "BATCH_SIZE": 48
+    },
+
+    "MULCLASS":{
+      "NUM_MUL_ITERATIONS": 0,
+      "LR_BASE_MULCLASS": 3e-4,
+      "BACKBONE": "simple",
+      "NAME": "mul_class_simple",
+      "BATCH_SIZE": 48
+    },
+
+    "SEG":{
+      "NUM_SEG_ITERATIONS": 150000,
+      "LR_BASE_SEG": 1e-4,
+      "WEIGHTED_CLASS_LOSS": true,
+      "BACKBONE": "resnet18",
+      "ARCHITECTURE": "Unet",
+      "NAME": "segmentator_full",
+      "BATCH_SIZE": 16
+    },
+    
+    "NUM_WORKERS": 6,
+
+    "OVERSAMPLING": true,
+    "AUGMENTATION": ["light", "medium"],
+
+    "SAVE_CHECKPOINT_EVERY": 150,
+    "PRINT_ITER_EVERY": 10
+  },
+
+  "evaluation":{
+    "SAVE_NUM_PREDICTIONS": 5,
+    "K_FOLD_CROSS_VALIDATION": 5
+  }
+}

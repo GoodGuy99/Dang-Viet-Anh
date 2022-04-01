@@ -1,0 +1,10 @@
+Pillow
+torchmetrics
+keras-unet-collection
+segmentation-models-pytorch
+albumentations
+torchinfo
+colabcode
+pylint
+kornia
+torchsummary
